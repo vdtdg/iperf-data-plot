@@ -30,11 +30,11 @@ def chart(args, data):
     for i in intervals:
         debit.append(i['sum']['bits_per_second'])
 
-    plt.plot(debit, label='bandwitdh per second')
+    plt.plot(debit, label='Bandwitdh (per second)')
 
     plt.axhline(data['end'][sum_string]['bits_per_second'], color='r', label='Avg bandwidth')
     plt.axhline(expected_bandwidth * 1000000, color='g', label='Expected bandwidth')
-    plt.plot(ta.EMA(np.array(debit), ema), label='bandwitch {} period moving average'.format(ema))
+    plt.plot(ta.EMA(np.array(debit), ema), label='Bandwidth {} period moving average'.format(ema))
 
     plt.title("{}, {}, {:.3}GB file".format(data['start']['timestamp']['time'],
                                          data['start']['test_start']['protocol'],
