@@ -14,7 +14,7 @@ positional arguments:
 &nbsp;&nbsp;&nbsp;&nbsp;input JSON output file from iperf  
 
 optional arguments:  
-&nbsp;&nbsp;&nbsp;&nbsp;-h, --help            show this help message and exit  
-&nbsp;&nbsp;&nbsp;&nbsp;-a EMA, --ema EMA     Exponential moving average used to smooth the bandwidth. Default at 60.  
-&nbsp;&nbsp;&nbsp;&nbsp;-e EXPECTEDBW, --expectedbw EXPECTEDBW  Expected bandwidth to be plotted in Mb.  
-&nbsp;&nbsp;&nbsp;&nbsp;-v, --verbose         increase output verbosity  
+&nbsp;&nbsp;&nbsp;&nbsp;-h, --help            **show this help message and exit**  
+&nbsp;&nbsp;&nbsp;&nbsp;-a EMA, --ema EMA     **Exponential moving average used to smooth the bandwidth. Default at 60.**  
+&nbsp;&nbsp;&nbsp;&nbsp;-e EXPECTEDBW, --expectedbw EXPECTEDBW  **Expected bandwidth to be plotted in Mb.**  
+&nbsp;&nbsp;&nbsp;&nbsp;-v, --verbose         **increase output verbosity**  
