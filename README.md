@@ -3,8 +3,7 @@ Simple python iperf JSON data vizualiser. Final plot of the data will include a 
 
 ### Requirements  
 It works on Python3, with iperf 3.1.3. I have not tested it with any other version.  
-Required python3 package : matplotlib, numpy, TA-Lib.  
-TA-Lib will be removed in future update as it is challenging to install.  
+Required python3 package : matplotlib
 
 ### Usage  
 usage: main.py [-h] [-a EMA] [-e EXPECTEDBW] [-v] [input]  
