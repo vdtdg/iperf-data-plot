@@ -1,8 +1,6 @@
 import json
 from pprint import pprint
 import matplotlib.pyplot as plt
-import talib as ta
-import numpy as np
 import sys
 import argparse
 
@@ -12,16 +10,29 @@ def print_file_info(data):
     pprint(data['end'])
 
 
+def ema(data, window):
+    if len(data) < window + 2:
+        return None
+    alpha = 2 / float(window + 1)
+    ema = []
+    for i in range(0, window):
+        ema.append(None)
+    ema.append(data[window])
+    for i in range(window+1, len(data)):
+        ema.append(ema[i-1] + (2/(window+1)*(data[i]-ema[i-1])))
+    return ema
+
+
 def chart(args, data):
     # Setting the default values
     expected_bandwidth = 0
-    ema = 60
+    ema_window = 60
     if args.protocol == 'udp':
         sum_string = 'sum'
     else:
         sum_string = 'sum_sent'
     if args.ema is not None:
-        ema = int(args.ema)
+        ema_window = int(args.ema)
     if args.expectedbw is not None:
         expected_bandwidth = int(args.expectedbw)
 
@@ -34,7 +45,7 @@ def chart(args, data):
 
     plt.axhline(data['end'][sum_string]['bits_per_second'], color='r', label='Avg bandwidth')
     plt.axhline(expected_bandwidth * 1000000, color='g', label='Expected bandwidth')
-    plt.plot(ta.EMA(np.array(debit), ema), label='Bandwidth {} period moving average'.format(ema))
+    plt.plot(ema(debit, ema_window), label='Bandwidth {} period moving average'.format(ema))
 
     plt.title("{}, {}, {:.3}GB file".format(data['start']['timestamp']['time'],
                                          data['start']['test_start']['protocol'],
@@ -67,6 +78,5 @@ def main(argv):
 if __name__ == "__main__":
     main(sys.argv[1:])
 
-# todo : remove ta lib requirement
 # todo : test with a tcp output file
 # todo : add more info in the print_file_info and to the verbose fonction
