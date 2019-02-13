@@ -1,6 +1,9 @@
 # Pycharm stuff
 .idea/
 
+# Measurement files
+data/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

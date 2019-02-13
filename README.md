@@ -3,18 +3,23 @@ Simple python iperf JSON data vizualiser. Final plot of the data will include a 
 
 ### Requirements  
 It works on Python3, with iperf 3.1.3. I have not tested it with any other version.  
-Required python3 package : matplotlib
+Required python3 package : *matplotlib*
 
-### Usage  
+### Usage
+```
 usage: main.py [-h] [-a EMA] [-e EXPECTEDBW] [-v] [input]  
 
-Simple python iperf JSON data vizualiser.  
+Simple python iperf JSON data vizualiser. Use -J option with iperf to have a JSON output.
 
 positional arguments:  
-&nbsp;&nbsp;&nbsp;&nbsp;input JSON output file from iperf  
+    input JSON output file from iperf
 
 optional arguments:  
-&nbsp;&nbsp;&nbsp;&nbsp;-h, --help            **show this help message and exit**  
-&nbsp;&nbsp;&nbsp;&nbsp;-a EMA, --ema EMA     **Exponential moving average used to smooth the bandwidth. Default at 60.**  
-&nbsp;&nbsp;&nbsp;&nbsp;-e EXPECTEDBW, --expectedbw EXPECTEDBW  **Expected bandwidth to be plotted in Mb.**  
-&nbsp;&nbsp;&nbsp;&nbsp;-v, --verbose         **increase output verbosity**  
+    -h, --help                       Show this help message and exit
+    -a EMA, --ema EMA     Exponential moving average used to smooth the bandwidth. Default at 60.
+    -e N, --expectedbw N  Expected bandwidth to be plotted in Mb.
+    -v, --verbose                 Increase output verbosity
+```
+
+### Known bug
+If ema size is bigger than the number of measurement points, then it crashes.
