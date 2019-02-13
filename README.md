@@ -19,6 +19,7 @@ optional arguments:
     -a EMA, --ema EMA     Exponential moving average used to smooth the bandwidth. Default at 60.
     -e N, --expectedbw N  Expected bandwidth to be plotted in Mb.
     -v, --verbose                 Increase output verbosity
+    -l, --log                           Plot will be in logarithmic scale
 ```
 
 ### Known bug

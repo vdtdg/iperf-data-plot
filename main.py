@@ -25,7 +25,6 @@ def chart(args, data):
         sum_string = 'sum'
     else:
         sum_string = 'sum_sent'
-        print("HEEEEEEEEEEEEEEEEEEEEEEEEEEEEY TCP")
     if args.ema is not None:
         ema_window = int(args.ema)
     if args.expectedbw is not None:
@@ -46,7 +45,11 @@ def chart(args, data):
                                          data['start']['test_start']['protocol'],
                                          data['end'][sum_string]['bytes']/1000000000))
     plt.legend()
-    plt.ylim(bottom=0)
+    if args.log:
+        plt.yscale('log')
+    else:
+        plt.yscale('linear')
+        plt.ylim(bottom=0)
     plt.ylabel('bit/s')
     plt.xlabel('time interval')
     plt.show()
@@ -65,6 +68,7 @@ def main(argv):
     parser.add_argument('-a', '--ema', help='Exponential moving average used to smooth the bandwidth. Default at 9.', type=int)
     parser.add_argument('-e', '--expectedbw', help='Expected bandwidth to be plotted in Mb.')
     parser.add_argument('-v', '--verbose', help='Increase output verbosity', action='store_true')
+    parser.add_argument('-l', '--log', help='Plot will be in logarithmic scale', action='store_true')
     args = parser.parse_args(argv)
     with open(args.input) as f:
         data = json.load(f)
